@@ -24,6 +24,8 @@ public class ItemsListAdapter extends BaseAdapter {
     private Context mContext;
     private Fragment fragment;
     private FragmentManager mFragmentManager;
+    private  TextView topic;
+    private  TextView content;
 
     public ItemsListAdapter(ArrayList<Items> arrayList, Context mContext, Fragment fragment,FragmentManager mFragmentManager) {
         this.arrayList = arrayList;
@@ -54,15 +56,24 @@ public class ItemsListAdapter extends BaseAdapter {
         if (view == null) {
             view = inflater.inflate(R.layout.items, viewGroup, false);
         } else {
-            TextView topic = view.findViewById(R.id.textTopic);
-            TextView content =  view.findViewById(R.id.textContent);
+            topic = view.findViewById(R.id.textTopic);
+            content =  view.findViewById(R.id.textContent);
             topic.setText(arrayList.get(position).getTopic());
             content.setText(arrayList.get(position).getContent());
+
+
             ImageButton editButton = view.findViewById(R.id.editButton);
             editButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     DialogFragment dialogFragment = EditDialog.newInstances();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("position",position);
+                    bundle.putString("topic", topic.getText().toString());
+                    bundle.putString("content", content.getText().toString());
+
+                    dialogFragment.setArguments(bundle);
                     dialogFragment.setTargetFragment(fragment,4);
                     dialogFragment.show(mFragmentManager,"Edit Dialog");
                 }
@@ -72,8 +83,9 @@ public class ItemsListAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
                     DialogFragment dialogFragment =  DeleteDialog.newInstances();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("position", position);
+
+                    Bundle bundle = new Bundle(); // to get position
+                    bundle.putInt("position", position); //send bundle
                     dialogFragment.setArguments(bundle);
                     dialogFragment.setTargetFragment(fragment,3);
                     dialogFragment.show(mFragmentManager,"Delete Dialog");
