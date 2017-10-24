@@ -1,10 +1,15 @@
 package android.mytodo;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,10 +22,14 @@ public class ItemsListAdapter extends BaseAdapter {
 
     private ArrayList<Items> arrayList;
     private Context mContext;
+    private Fragment fragment;
+    private FragmentManager mFragmentManager;
 
-    public ItemsListAdapter(ArrayList<Items> arrayList, Context mContext) {
+    public ItemsListAdapter(ArrayList<Items> arrayList, Context mContext, Fragment fragment,FragmentManager mFragmentManager) {
         this.arrayList = arrayList;
         this.mContext = mContext;
+        this.fragment = fragment;
+        this.mFragmentManager = mFragmentManager;
     }
 
     @Override
@@ -35,11 +44,11 @@ public class ItemsListAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return 0;
+       return 0;
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup) {
+    public View getView(final int position, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = (LayoutInflater) mContext.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (view == null) {
@@ -49,6 +58,27 @@ public class ItemsListAdapter extends BaseAdapter {
             TextView content =  view.findViewById(R.id.textContent);
             topic.setText(arrayList.get(position).getTopic());
             content.setText(arrayList.get(position).getContent());
+            ImageButton editButton = view.findViewById(R.id.editButton);
+            editButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DialogFragment dialogFragment = EditDialog.newInstances();
+                    dialogFragment.setTargetFragment(fragment,4);
+                    dialogFragment.show(mFragmentManager,"Edit Dialog");
+                }
+            });
+            final ImageButton deleteButton = view.findViewById(R.id.deleteButton);
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DialogFragment dialogFragment =  DeleteDialog.newInstances();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("position", position);
+                    dialogFragment.setArguments(bundle);
+                    dialogFragment.setTargetFragment(fragment,3);
+                    dialogFragment.show(mFragmentManager,"Delete Dialog");
+                }
+            });
         }
         return view;
     }

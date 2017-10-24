@@ -60,7 +60,7 @@ public class MyToDoDialogFragment extends DialogFragment implements View.OnClick
             } else if (content.getText().toString().isEmpty()) {
                 Toast.makeText(getContext(), "Please Fill Up Content", Toast.LENGTH_SHORT).show();
             }else {
-                getTargetFragment().onActivityResult(2, Activity.RESULT_OK, intent);
+                getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, intent);
                 dismiss();
             }
         } else if (view.getId() == R.id.button_cancel) {
