@@ -10,44 +10,58 @@
         android:paddingLeft="20dp"
         android:paddingTop="20dp">
 
-        <TextView
-            android:id="@+id/textTopic"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Header"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+        <!--<ImageButton-->
 
-        <TextView
-            android:id="@+id/textContent"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Body"
-            android:layout_below="@+id/textTopic"
+        <!--android:id="@+id/circle"-->
+        <!--android:layout_width="80dp"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:background="#0000"-->
+        <!--android:src="@drawable/ic_circle" />-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true">
 
-        <ImageButton
-            android:id="@+id/editButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignRight="@+id/textTopic"
-            android:layout_marginRight="20dp"
-            android:background="#ffff"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_mode_edit_black_24dp" />
+            <TextView
+                android:id="@+id/textTopic"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Header"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-        <ImageButton
-            android:id="@+id/deleteButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignRight="@+id/textContent"
-            android:layout_below="@+id/editButton"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:background="#ffff"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_delete_black_24dp" />
+            <TextView
+                android:id="@+id/textContent"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/textTopic"
+                android:text="Body" />
 
+            <ImageButton
+                android:id="@+id/editButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignRight="@+id/textTopic"
+                android:layout_marginRight="20dp"
+                android:background="#0000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_mode_edit_black_24dp" />
+
+            <ImageButton
+                android:id="@+id/deleteButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignRight="@+id/textContent"
+                android:layout_below="@+id/editButton"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="#0000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_delete_black_24dp" />
+
+        </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

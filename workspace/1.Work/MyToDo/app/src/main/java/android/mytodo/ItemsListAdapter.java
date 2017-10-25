@@ -61,23 +61,6 @@ public class ItemsListAdapter extends BaseAdapter {
             topic.setText(arrayList.get(position).getTopic());
             content.setText(arrayList.get(position).getContent());
 
-
-            ImageButton editButton = view.findViewById(R.id.editButton);
-            editButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    DialogFragment dialogFragment = EditDialog.newInstances();
-
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("position",position);
-                    bundle.putString("topic", topic.getText().toString());
-                    bundle.putString("content", content.getText().toString());
-
-                    dialogFragment.setArguments(bundle);
-                    dialogFragment.setTargetFragment(fragment,4);
-                    dialogFragment.show(mFragmentManager,"Edit Dialog");
-                }
-            });
             final ImageButton deleteButton = view.findViewById(R.id.deleteButton);
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -91,6 +74,23 @@ public class ItemsListAdapter extends BaseAdapter {
                     dialogFragment.show(mFragmentManager,"Delete Dialog");
                 }
             });
+
+            ImageButton editButton = view.findViewById(R.id.editButton);
+            editButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DialogFragment dialogFragment = EditDialog.newInstances();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("position",position);
+                    bundle.putString("topic", topic.getText().toString());
+                    bundle.putString("content", content.getText().toString());
+                    dialogFragment.setArguments(bundle);
+                    dialogFragment.setTargetFragment(fragment,4);
+                    dialogFragment.show(mFragmentManager,"Edit Dialog");
+                }
+            });
+
         }
         return view;
     }

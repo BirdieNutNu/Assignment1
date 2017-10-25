@@ -27,8 +27,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     private ArrayList<Items> itemsArrayList;
     public static final String TOPIC = "Topic";
     public static final String CONTENT = "Content";
-    public static final String TOPIC_CHANGE = "TopicChange";
-    public static final String CONTETN_CHANGE = "ContetnChange";
 
 
     @Nullable
@@ -76,13 +74,12 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 }
             case 4:
                 if (resultCode == Activity.RESULT_OK) {
-//                    itemsArrayList.add(new Items(data.getStringExtra(TOPIC_CHANGE), data.getStringExtra(CONTETN_CHANGE)));
-//                    listAdapter.notifyDataSetChanged();
-                    int position = data.getIntExtra("position", -1);
-                    String topic = data.getStringExtra("topic");
-                    String content = data.getStringExtra("content");
 
-//                    Items items1 = new Items(topic,content);
+                    int position = data.getIntExtra("position", -1);
+                    String topic = data.getStringExtra("topic"); //pass by ref as topic from editDialog
+                    String content = data.getStringExtra("content"); // pass by ref as content
+
+//                    Items items1 = new Items(topic,content);   //create new Items and set its position, replace it topic and content
 //                    itemsArrayList.set(position,items1);
 //                    items.setTopic("xxxxx");
                     Items items =  itemsArrayList.get(position);

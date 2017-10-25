@@ -5,7 +5,8 @@
     <ListView
         android:id="@+id/list_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
     </ListView>
 
     <ImageButton
@@ -13,7 +14,7 @@
         android:src="@drawable/ic_add_circle"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="#ffff"
+        android:background="#0000"
         android:scaleType="fitXY"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"

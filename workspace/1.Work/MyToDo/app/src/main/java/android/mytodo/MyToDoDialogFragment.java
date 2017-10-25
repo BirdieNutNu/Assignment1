@@ -9,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 /**
@@ -24,6 +27,8 @@ public class MyToDoDialogFragment extends DialogFragment implements View.OnClick
     private Button cancelButton;
     private EditText topic;
     private EditText content;
+    private CheckBox checkStatus;
+
 
     @Nullable
     @Override
@@ -34,14 +39,15 @@ public class MyToDoDialogFragment extends DialogFragment implements View.OnClick
     }
 
     public void initInstances(View v) {
-        saveButton =  v.findViewById(R.id.button_save);
+        saveButton = v.findViewById(R.id.button_save);
         saveButton.setOnClickListener(this);
-        cancelButton =  v.findViewById(R.id.button_cancel);
+        cancelButton = v.findViewById(R.id.button_cancel);
         cancelButton.setOnClickListener(this);
-        topic =  v.findViewById(R.id.inputTopic);
-        content =  v.findViewById(R.id.inputContent);
-    }
+        topic = v.findViewById(R.id.inputTopic);
+        content = v.findViewById(R.id.inputContent);
+        checkStatus = v.findViewById(R.id.checkbox);
 
+    }
 
     public static MyToDoDialogFragment newInstances() {
         MyToDoDialogFragment myToDoDialogFragment = new MyToDoDialogFragment();
@@ -59,7 +65,9 @@ public class MyToDoDialogFragment extends DialogFragment implements View.OnClick
                 Toast.makeText(getContext(), "Please Fill Up Topic", Toast.LENGTH_SHORT).show();
             } else if (content.getText().toString().isEmpty()) {
                 Toast.makeText(getContext(), "Please Fill Up Content", Toast.LENGTH_SHORT).show();
-            }else {
+            } else if (!checkStatus.isChecked()) {
+                Toast.makeText(getContext(), "Please Verify by Check", Toast.LENGTH_SHORT).show();
+            }  else {
                 getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, intent);
                 dismiss();
             }
