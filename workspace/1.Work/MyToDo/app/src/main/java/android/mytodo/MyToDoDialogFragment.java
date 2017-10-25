@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +69,7 @@ public class MyToDoDialogFragment extends DialogFragment implements View.OnClick
             } else if (!checkStatus.isChecked()) {
                 Toast.makeText(getContext(), "Please Verify by Check", Toast.LENGTH_SHORT).show();
             }  else {
+                Log.d("testIntent", intent.getStringExtra(TOPIC) + intent.getStringExtra(CONTENT));
                 getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, intent);
                 dismiss();
             }

@@ -82,6 +82,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 //                    Items items1 = new Items(topic,content);   //create new Items and set its position, replace it topic and content
 //                    itemsArrayList.set(position,items1);
 //                    items.setTopic("xxxxx");
+
                     Items items =  itemsArrayList.get(position);
                     items.setTopic(topic);
                     items.setContent(content);
