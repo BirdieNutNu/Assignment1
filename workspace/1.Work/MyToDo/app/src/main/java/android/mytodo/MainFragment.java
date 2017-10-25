@@ -69,17 +69,25 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 }
             case 3:
                 if (resultCode == Activity.RESULT_OK) {
-                    int position = data.getIntExtra("position", -1);
+                    int position = data.getIntExtra("position", -2);
                     itemsArrayList.remove(position);
                     listAdapter.notifyDataSetChanged();
                     break;
                 }
             case 4:
-                if (resultCode == Activity.RESULT_FIRST_USER) {
+                if (resultCode == Activity.RESULT_OK) {
 //                    itemsArrayList.add(new Items(data.getStringExtra(TOPIC_CHANGE), data.getStringExtra(CONTETN_CHANGE)));
 //                    listAdapter.notifyDataSetChanged();
-                    Items items =  itemsArrayList.get(0);
-                    items.setTopic("xxxxx");
+                    int position = data.getIntExtra("position", -1);
+                    String topic = data.getStringExtra("topic");
+                    String content = data.getStringExtra("content");
+
+//                    Items items1 = new Items(topic,content);
+//                    itemsArrayList.set(position,items1);
+//                    items.setTopic("xxxxx");
+                    Items items =  itemsArrayList.get(position);
+                    items.setTopic(topic);
+                    items.setContent(content);
 
                     listAdapter.notifyDataSetChanged();
                     break;
