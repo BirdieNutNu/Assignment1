@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
 
+    public static final String TOPICVIEW = "topicview";
+    public static final String CONTENTVIEW = "contentview";
     private ImageButton addButton;
     private ListView listView;
     private ItemsListAdapter listAdapter;
@@ -40,10 +43,35 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void initInstances(View v) {
         addButton = v.findViewById(R.id.add_button);
         addButton.setOnClickListener(this);
-        listView = v.findViewById(R.id.list_item);
         itemsArrayList = new ArrayList<>();
-        listAdapter = new ItemsListAdapter(itemsArrayList, getContext() , this, getFragmentManager());
+        listView = v.findViewById(R.id.list_item);
+        itemsArrayList.add(new Items("Test 1", "write Something 1"));
+        itemsArrayList.add(new Items("Test 2", "write Something 2"));
+        itemsArrayList.add(new Items("Test 3", "write Something 3"));
+        itemsArrayList.add(new Items("Test 4", "write Something 4"));
+        itemsArrayList.add(new Items("Test 5", "write Something 5"));
+        listAdapter = new ItemsListAdapter(itemsArrayList, getContext(), this, getFragmentManager());
         listView.setAdapter(listAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Items i = itemsArrayList.get(position);
+//                i.getTopic();
+//                Toast.makeText(getContext(),"Topic :"+i.getTopic(),Toast.LENGTH_SHORT).show();
+//                i.getContent();
+//                Toast.makeText(getContext(),"Content :"+i.getContent(),Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getContext(), NoteActivity.class);
+                intent.putExtra(TOPICVIEW, i.getTopic());
+                intent.putExtra(CONTENTVIEW, i.getContent());
+                startActivity(intent);
+                Toast.makeText(getContext(),"Topic :"+i.getTopic(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"Content :"+i.getContent(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
     @Override
@@ -54,6 +82,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             dialogFragment.show(getFragmentManager(), "My To Do Dialog");
         }
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -83,7 +112,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 //                    itemsArrayList.set(position,items1);
 //                    items.setTopic("xxxxx");
 
-                    Items items =  itemsArrayList.get(position);
+                    Items items = itemsArrayList.get(position);
                     items.setTopic(topic);
                     items.setContent(content);
 

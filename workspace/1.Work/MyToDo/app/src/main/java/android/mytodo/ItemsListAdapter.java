@@ -56,7 +56,7 @@ public class ItemsListAdapter extends BaseAdapter {
         if (view == null) {
             view = inflater.inflate(R.layout.items, viewGroup, false);
         }
-
+        //set topic and content
         topic = view.findViewById(R.id.textTopic);
         content = view.findViewById(R.id.textContent);
         topic.setText(arrayList.get(position).getTopic());
@@ -69,7 +69,7 @@ public class ItemsListAdapter extends BaseAdapter {
                 DialogFragment dialogFragment = DeleteDialog.newInstances();
 
                 Bundle bundle = new Bundle(); // to get position
-                bundle.putInt("position", position); //send bundle
+                bundle.putInt("position", position); //send bundle to delete dialog
                 dialogFragment.setArguments(bundle);
                 dialogFragment.setTargetFragment(fragment, 3);
                 dialogFragment.show(mFragmentManager, "Delete Dialog");

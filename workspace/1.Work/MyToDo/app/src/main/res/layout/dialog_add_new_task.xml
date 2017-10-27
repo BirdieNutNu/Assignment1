@@ -35,8 +35,7 @@
         android:maxLength="30"
         android:paddingLeft="16dp"
         android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textSize="20sp" />
 
 
     <TextView
@@ -58,7 +57,7 @@
         android:paddingLeft="16dp"
         android:textColor="#000000"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        />
 
 
     <!--<TextView-->
@@ -128,16 +127,16 @@
         android:id="@+id/checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
         android:text="Completed?"
-        android:textSize="20dp" />
+        android:textSize="15dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginLeft="120dp"
         android:orientation="horizontal"
-        android:paddingTop="40dp">
+        android:paddingTop="20dp">
 
         <Button
             android:id="@+id/button_cancel"
@@ -145,7 +144,7 @@
             android:layout_height="60dp"
             android:background="#ffff"
             android:text="Cancel"
-            android:textSize="22sp" />
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/button_save"
@@ -156,7 +155,7 @@
             android:background="#ffff"
             android:text="Save"
             android:textColor="#33BAFF"
-            android:textSize="22sp" />
+            android:textSize="15sp" />
 
     </LinearLayout>
 

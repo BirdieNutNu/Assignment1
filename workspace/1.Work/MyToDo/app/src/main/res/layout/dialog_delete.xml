@@ -22,7 +22,7 @@
 
         <Button
             android:textColor="#ff0000"
-            android:background="#ffff"
+            android:background="#0000"
             android:id="@+id/cancleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
 
         <Button
             android:id="@+id/okButton"
-            android:background="#ffff"
+            android:background="#0000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/cancleButton"
