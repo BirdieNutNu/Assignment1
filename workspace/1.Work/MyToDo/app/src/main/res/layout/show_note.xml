@@ -43,21 +43,21 @@
 
         <TextView
             android:id="@+id/viewContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_below="@+id/viewTopic"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:text="content" />
 
-        <Button
-            android:id="@+id/buttonOk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/viewContent"
-            android:layout_marginTop="20dp"
-            android:background="#ff33BAFF"
-            android:text="Ok" />
+        <!--<Button-->
+            <!--android:id="@+id/buttonOk"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_below="@+id/viewContent"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:background="#ff33BAFF"-->
+            <!--android:text="Ok" />-->
     </RelativeLayout>
 </LinearLayout>

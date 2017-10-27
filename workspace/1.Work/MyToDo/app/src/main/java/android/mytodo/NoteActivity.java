@@ -14,6 +14,7 @@ public class NoteActivity extends AppCompatActivity {
     public static final String CONTENTVIEW = "contentview";
     public static final String VIEW_TOPIC = "viewTopic";
     public static final String VIEW_CONTENT = "viewContent";
+//    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,22 @@ public class NoteActivity extends AppCompatActivity {
                 .add(R.id.contentContainer1, noteFragment)
                 .commit();
 
-
+        setUpView();
     }
 
+    public void setUpView() { // set up toolbar press back
+        setTitle("Note Details");
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+    @Override
+    public boolean onSupportNavigateUp() { // press to go back
+        finish();
+        return false;
+    }
 }

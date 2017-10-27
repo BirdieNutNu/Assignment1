@@ -24,12 +24,16 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     public static final String TOPICVIEW = "topicview";
     public static final String CONTENTVIEW = "contentview";
+    public static final String SAVETOPIC = "savetopic";
+    public static final String SAVE_CONTENT = "saveContent";
+
     private ImageButton addButton;
     private ListView listView;
     private ItemsListAdapter listAdapter;
     private ArrayList<Items> itemsArrayList;
     public static final String TOPIC = "Topic";
     public static final String CONTENT = "Content";
+
 
 
     @Nullable
@@ -39,6 +43,10 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         initInstances(rootView);
         return rootView;
     }
+
+
+
+
 
     public void initInstances(View v) {
         addButton = v.findViewById(R.id.add_button);
@@ -67,8 +75,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 intent.putExtra(TOPICVIEW, i.getTopic());
                 intent.putExtra(CONTENTVIEW, i.getContent());
                 startActivity(intent);
-                Toast.makeText(getContext(),"Topic :"+i.getTopic(),Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(),"Content :"+i.getContent(),Toast.LENGTH_SHORT).show();
+
 
             }
         });
