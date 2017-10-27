@@ -29,11 +29,13 @@ public class NoteFragment extends Fragment {
 
 
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.show_note, container, false);
         initInstances(rootView);
+        setHasOptionsMenu(true); // show menu option
         return rootView;
     }
 
@@ -52,9 +54,21 @@ public class NoteFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
        inflater.inflate(R.menu.menu_note_option, menu);
-        mMenu = menu;
-        MenuItem delMenu = menu.findItem(R.id.action_delete);
-        MenuItem editMenu = menu.findItem(R.id.action_edit);
+//        updateViewVisibility();
+        menu.findItem(R.id.action_edit).setVisible(true);
+        menu.findItem(R.id.action_delete).setVisible(true);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
 
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.action_edit){
+            String topic = topicView.getText().toString();
+            String content = contentView.getText().toString();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
